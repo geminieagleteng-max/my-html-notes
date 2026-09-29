@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【歷史】260929_鄭氏治臺與清初移民社會</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    :root {
+      --bg-primary: #f8fafc;
+      --bg-card: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --accent: #2563eb;
+      --accent-soft: #eff6ff;
+      --border: #e2e8f0;
+      --border-focus: #cbd5e1;
+      --tag-bg: #e0f2fe;
+      --tag-text: #0369a1;
+      --header-gradient: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans TC', 'Inter', -apple-system, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.8;
+      font-size: 16px;
+      padding: 30px 16px 60px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px -2px rgba(0,0,0,0.06), 0 2px 6px -1px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    header.hero {
+      background: var(--header-gradient);
+      color: #ffffff;
+      padding: 36px 40px 30px;
+      position: relative;
+    }
+    header.hero .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      color: #f1f5f9;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+    header.hero h1 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: -0.5px;
+    }
+    header.hero .meta {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #94a3b8;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .content-body {
+      padding: 40px 48px;
+    }
+    @media (max-width: 640px) {
+      .content-body { padding: 24px 20px; }
+      header.hero { padding: 28px 24px 22px; }
+      header.hero h1 { font-size: 1.5rem; }
+    }
+    h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-top: 2.2em;
+      margin-bottom: 0.9em;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    h2:first-of-type { margin-top: 0.5em; }
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1e3a8a;
+      margin-top: 1.6em;
+      margin-bottom: 0.6em;
+      padding-left: 10px;
+      border-left: 4px solid var(--accent);
+    }
+    p { margin-bottom: 1.1em; }
+    ul, ol { margin-bottom: 1.2em; padding-left: 1.8em; }
+    li { margin-bottom: 0.4em; }
+    .mermaid {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 16px;
+      margin: 1.6em 0;
+      text-align: center;
+      overflow-x: auto;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+    }
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 1.6em 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+    thead th {
+      background: #f1f5f9;
+      color: #1e293b;
+      font-weight: 600;
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 2px solid var(--border);
+    }
+    tbody td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tbody tr:nth-child(even) { background: #fafafa; }
+    tbody tr:hover { background: #f0f7ff; }
+    tbody tr:last-child td { border-bottom: none; }
+    code {
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      background: #f1f5f9;
+      color: #b91c1c;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 16px;
+      border-radius: 10px;
+      overflow-x: auto;
+      margin: 1.4em 0;
+      font-size: 0.92em;
+    }
+    pre code { background: transparent; color: inherit; padding: 0; }
+    blockquote {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: 14px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 1.4em 0;
+      color: #1e40af;
+    }
+    hr { border: none; border-top: 1px solid var(--border); margin: 2.2em 0; }
+    .katex-display {
+      margin: 1.2em 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 6px 0;
+    }
+    .katex { font-size: 1.05em; }
+    
+    /* NotebookLM 原生 D3 互動心智圖樣式 */
+    .mindmap-box {
+      margin: 2em 0;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    }
+    .mindmap-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .mindmap-title {
+      font-weight: 700;
+      color: #1e293b;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .mindmap-btns {
+      display: flex;
+      gap: 8px;
+    }
+    .mm-btn {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      font-weight: 500;
+      color: #334155;
+      transition: all 0.2s;
+    }
+    .mm-btn:hover { background: #f1f5f9; }
+    #tree-svg-container {
+      width: 100%;
+      height: 520px;
+      background: #ffffff;
+      cursor: grab;
+    }
+    #tree-svg-container:active { cursor: grabbing; }
+    .node circle {
+      cursor: pointer;
+      stroke-width: 2.5px;
+      transition: all 0.2s;
+    }
+    .node circle:hover { transform: scale(1.25); }
+    .node text {
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      fill: #1e293b;
+      cursor: pointer;
+      paint-order: stroke fill;
+      stroke: #ffffff;
+      stroke-width: 4.5px;
+      stroke-linejoin: round;
+      user-select: none;
+    }
+    .link {
+      fill: none;
+      stroke: #cbd5e1;
+      stroke-width: 1.8px;
+      stroke-opacity: 0.85;
+      transition: stroke-width 0.2s;
+    }
+    .link:hover { stroke: #94a3b8; stroke-width: 2.5px; }
+
+    footer.doc-foot {
+      text-align: center;
+      padding: 24px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      background: #fcfdfe;
+    }
+    .print-btn {
+      position: absolute;
+      top: 36px;
+      right: 40px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .print-btn:hover { background: rgba(255,255,255,0.25); }
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      body {
+        padding: 0 !important;
+        margin: 0 !important;
+        background: #ffffff !important;
+      }
+      .container {
+        box-shadow: none !important;
+        border: none !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+      }
+      .print-btn, .mindmap-btns {
+        display: none !important;
+      }
+      header.hero {
+        background: var(--header-gradient) !important;
+        color: #ffffff !important;
+        border-radius: 8px !important;
+        padding: 24px 30px !important;
+        margin-bottom: 20px !important;
+      }
+      header.hero h1 {
+        color: #ffffff !important;
+        font-size: 1.6rem !important;
+      }
+      header.hero .badge {
+        background: rgba(255,255,255,0.2) !important;
+        color: #ffffff !important;
+      }
+      header.hero .meta {
+        color: #cbd5e1 !important;
+      }
+      .content-body {
+        padding: 10px 0 !important;
+      }
+      h1, h2, h3, h4, table, tr, pre, .mermaid, .mindmap-box, blockquote {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+      h2, h3 {
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <div class="badge">📖 高中課堂互動圖文筆記</div>
+      <button class="print-btn" onclick="window.print()">🖨️ 列印 / 另存 PDF</button>
+      <h1>【歷史】260929_鄭氏治臺與清初移民社會</h1>
+      <div class="meta">
+        <span>⏱️ 數位筆記儀表板</span>
+        <span>🏷️ 含可縮放互動心智圖、時間軸與觀念對比</span>
+      </div>
+    </header>
+    <div class="content-body">
+      
+      <div class="mindmap-box">
+        <div class="mindmap-header">
+          <div class="mindmap-title">
+            <span>🧠 本課核心知識脈絡（NotebookLM 原生互動心智圖 • 支援縮放與展開）</span>
+          </div>
+          <div class="mindmap-btns">
+            <button class="mm-btn" onclick="expandAll()">展開全部</button>
+            <button class="mm-btn" onclick="collapseAll()">收合分支</button>
+            <button class="mm-btn" onclick="resetZoom()">重設視角</button>
+          </div>
+        </div>
+        <div id="tree-svg-container"></div>
+      </div>
+        
+      <h2>📖 課堂主題與核心摘要 (Class Overview)</h2>
+<p>本堂課主要講授「明鄭時期的治理轉折」與「清領初期的臺灣漢人移民社會發展」。課程詳細剖析鄭成功至鄭經父子時期的屯田策略、名號與行政區劃變遷，並深入探討清初「渡臺禁令」下的移民推拉力、偷渡風險與社會結構。同時，針對漢人三大族群（泉州、漳州、客家）的移墾順序、地理分布、神明信仰及「分類械鬥」風氣進行多維度的歸納與比較，協助建立完整的清初臺灣史觀。</p>
+<div class="mermaid">
+graph LR
+  Root["鄭氏治臺與清初移民社會"] --> A["明鄭政權的治理與演變"]
+  Root --> B["清初移民推拉力與渡臺禁令"]
+  Root --> C["漢人族群移墾與信仰分布"]
+  Root --> D["清代臺灣社會風氣與分類械鬥"]
+
+  A --> A1["鄭成功：軍屯制與東都"]
+  A --> A2["鄭經：三藩之亂、東寧王國與全臺首學"]
+
+  B --> B1["大陸推力：康雍乾人口暴增與山多田少"]
+  B --> B2["臺灣拉力：人去業荒與土地肥沃"]
+  B --> B3["渡臺禁令限制與偷渡風險（六死三留一回頭）"]
+
+  C --> C1["泉州人：最早／平原港口／保生大帝"]
+  C --> C2["漳州人：次之／丘陵地區／開漳聖王"]
+  C --> C3["客家人：最晚／近山地區／三山國王"]
+
+  D --> D1["械鬥誘因：資源爭奪與羅漢腳過多"]
+  D --> D2["分類層級：跨省、同省異州、同縣異姓、同業樂團"]
+</div>
+<hr />
+<h2>💡 核心知識點與觀念詳解 (Key Concepts)</h2>
+<h3>1. 明鄭政權的治理演變與政權轉折</h3>
+<h4>(1) 鄭成功時期：軍屯制度與「東都」建立</h4>
+<ul>
+<li><strong>糧食危機與軍屯制</strong>：鄭成功率軍來臺後，面臨首要難題為糧食供給。為解決軍糧，採行「兵農合一」的軍屯（屯田）政策。然而，軍隊開墾土地過程中常與原住民爆發土地利益衝突。</li>
+<li><strong>經典課堂實例（南投林奇將軍廟）</strong>：課堂提及在竹塹地區及南投均曾發生屯田衝突。南投原住民曾殺害鄭成功的參軍「林奇」；後人為紀念他，將當地山區稱為「波林奇」，現今南投竹山地區設有「林將軍廟」供奉林奇將軍。</li>
+<li><strong>招纜流民與澎湖安撫師</strong>：因戰亂與天災，大量中國沿海流民逃至澎湖馬公。鄭成功於澎湖設置「安撫師」，專責招攬流民來臺耕墾，解決當時臺灣「有地無人」的缺工問題。</li>
+<li><strong>「東都」之名由來</strong>：鄭成功統治時期，政權首都實質設於<strong>廈門</strong>，將臺灣定位為東方的都城，故稱臺灣為「東都」。</li>
+</ul>
+<h4>(2) 鄭經時期：行政改制與儒學文教</h4>
+<ul>
+<li><strong>三藩之亂與首都轉移</strong>：鄭經曾率軍參與中國大陸的「三藩之亂」，最終敗北並徹底喪失廈門基地。鄭經退回臺灣後，正式將臺灣作為政治中心，因而將「東都」改稱「東寧」（東寧王國）。</li>
+<li><strong>行政區劃升格</strong>：隨著首都定於臺灣，鄭經將原來的「天興縣、萬年縣」升格改制為「天興州、萬年州」。</li>
+<li><strong>文教制度引進</strong>：鄭經採納陳永華建議，引進中國傳統文教與科舉制度，興建台南孔廟（即「全臺首學」），為臺灣官方儒學教育之始。</li>
+<li><strong>課堂觀念澄清（台北孔廟 vs 台南孔廟）</strong>：老師特別強調，全臺最早且於明鄭時期興建的孔廟是台南「全臺首學」；而台北市大龍峒孔廟則是後來中華民國政府時期所興建，兩者年代與歷史背景完全不同。</li>
+</ul>
+<div class="mermaid">
+graph TD
+  Z1["鄭成功時期"] -->|首都：廈門| Z2["稱臺灣為『東都』<br/>設天興縣、萬年縣"]
+  Z2 -->|實施軍屯、設澎湖安撫師| Z3["解決糧食與缺工問題"]
+
+  Z3 -->|鄭經繼位與參與三藩之亂| Z4["喪失廈門基地，首都移至臺灣"]
+  Z4 -->|行政升格與文教| Z5["改稱為『東寧王國』<br/>升格天興州、萬年州<br/>興建台南孔廟（全臺首學）"]
+</div>
+<hr />
+<h3>2. 清領初期渡臺政策與人口推拉力</h3>
+<h4>(1) 清廷治臺方針：「為防而治」與「人去業荒」</h4>
+<p>清朝於 1683 年（康熙 22 年）派施琅攻取臺灣。為防止臺灣再度成為反清復明的割據基地，採取「為防而治」消極治理方針，大舉將在臺漢人遣返回大陸，導致臺灣初期出現「人去業荒」、產業一度廢棄的現象。</p>
+<h4>(2) 移民臺灣的推力與拉力分析</h4>
+<p>儘管清廷頒布嚴格的「渡臺禁令」，但在強大人口與經濟壓力下，中國沿海移民仍源源不絕偷渡來臺：<br />
+* <strong>中國大陸推力（天災人口爆發）</strong>：<br />
+  * <strong>人口暴增</strong>：康雍乾三朝（約一個半世紀）人口從 2 億陡增至 4.5 億，但可耕地面積未顯著增加。<br />
+  * <strong>美洲作物養活人口</strong>：依賴大航海時代傳入的美洲作物（地瓜/番薯、玉米、花生等）維持生計，造成極度嚴重的「人多地少」危機。<br />
+  * <strong>閩粵區域特性</strong>：福建與廣東地區「山多田少」（俗稱「七山二水一分田」），加上頻繁的天災與動亂，生存極其困難，形成推離原鄉的巨大力量。<br />
+* <strong>臺灣拉力</strong>：臺灣土地肥沃、資源豐富，經「人去業荒」後呈現「地廣人稀」的狀態，吸引無業貧民渡海尋求生機。</p>
+<h4>(3) 渡臺禁令條款與偷渡黑話</h4>
+<p>清廷嚴格管制漢人渡臺，主要規定包括：<br />
+1. <strong>需領有官府許可證</strong>（無證照者即為偷渡）。<br />
+2. <strong>限單身男子</strong>（不得帶兄弟同行）。<br />
+3. <strong>嚴禁攜家帶眷</strong>（防止漢人於臺灣深根立業）。<br />
+4. <strong>禁止粵民（廣東人）來臺</strong>：清廷認為廣東沿海多海盜且剽悍，易成為反抗勢力，故全面封殺粵籍移民。直到「牡丹社事件」後，沈葆楨與丁日昌為推動「開山撫墾」，才由丁日昌招攬廣東潮州、汕頭地區（潮善地區）移民來臺。</p>
+<ul>
+<li><strong>偷渡風險與俗諺「六死三留一回頭」</strong>：</li>
+<li>偷渡者多乘坐船體小且常嚴重超載的「同安船」，橫渡風浪險惡的臺灣海峽（尤其冬季東北季風浪高可達 3 公尺以上）。</li>
+<li><strong>偷渡黑話</strong>：船長若遇乘客精神崩潰或生病，會下達密語：<ul>
+<li>「<strong>種芋頭</strong>」：佯稱修船將發瘋或患病的乘客騙至無人沙洲拋棄。</li>
+<li>「<strong>餵魚兒</strong>」：直接將乘客拋入海中丟棄。</li>
+</ul>
+</li>
+<li>俗語「六死三留一回頭」精準道出渡海極高死亡率（十人中六人死於海難或折磨、三人成功抵臺、一人臨陣退縮）。</li>
+<li><strong>「羅漢腳」社會問題</strong>：受限於禁帶家眷政策，臺灣社會呈現極度的「男多女少」。許多無法成家立業、無固定工作的單身男子，夜晚常睡在廟宇羅漢像腳下，稱為「羅漢腳」，成為日後社會動盪與械鬥的主力。</li>
+</ul>
+<hr />
+<h3>3. 漢人族群移墾地理分布與信仰對比</h3>
+<p>由於移民來臺時間先後不同，直接決定了各大族群在臺灣的開墾順序、地理空間分布與隨身祈求的神明信仰：</p>
+<ul>
+<li><strong>第一批（最早/最多）：泉州人</strong></li>
+<li><strong>移墾區域</strong>：最早抵達，佔據地理條件最佳的<strong>西部沿海平原、港口與城鎮</strong>。</li>
+<li><strong>信仰神明</strong>：<strong>保生大帝</strong>（沿海風大、環境惡劣，特別重視醫神與身體健康）。</li>
+<li><strong>第二批（次之）：漳州人</strong></li>
+<li><strong>移墾區域</strong>：較泉州人晚到，平原多已被佔據，主要分佈於內陸<strong>丘陵地</strong>與平原邊緣。</li>
+<li><strong>信仰神明</strong>：<strong>開漳聖王</strong>（祈求開墾丘陵土地順利）。</li>
+<li><strong>第三批（最晚/最少）：客家人（粵籍/閩南客家）</strong></li>
+<li><strong>移墾區域</strong>：因渡臺禁令限制，來臺時間最晚，被迫深入<strong>近山地區與丘陵深處</strong>。</li>
+<li><strong>信仰神明</strong>：<strong>三山國王</strong>（來自廣東潮州揭陽三山神，祈求山區平安鎮山）。</li>
+</ul>
+<h4>📊 臺灣清初三大移民族群對比表</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">對比項目</th>
+<th style="text-align: left;">泉州人</th>
+<th style="text-align: left;">漳州人</th>
+<th style="text-align: left;">客家人（含粵民）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>來臺順序</strong></td>
+<td style="text-align: left;">最早抵達</td>
+<td style="text-align: left;">次之</td>
+<td style="text-align: left;">最晚抵達（因渡臺禁令限制粵民）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>人口比重</strong></td>
+<td style="text-align: left;">人數最多</td>
+<td style="text-align: left;">人數次之</td>
+<td style="text-align: left;">人數最少</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>地理分布</strong></td>
+<td style="text-align: left;">西部沿海平原、港口、商埠</td>
+<td style="text-align: left;">內陸丘陵地區、平原邊緣</td>
+<td style="text-align: left;">近山地區、丘陵山谷</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>主要信仰</strong></td>
+<td style="text-align: left;">保生大帝（醫神）</td>
+<td style="text-align: left;">開漳聖王（開墾神）</td>
+<td style="text-align: left;">三山國王（山神/鎮山）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>原鄉居住說</strong></td>
+<td style="text-align: left;">擇沿海平原（與原鄉相近）</td>
+<td style="text-align: left;">擇丘陵地（與原鄉相近）</td>
+<td style="text-align: left;">擇山區（與原鄉相近）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>註（課堂補充學說）</strong>：關於移民分布，學界有兩種說法：其一為「<strong>原鄉生活經驗相近說</strong>」（移民依大陸原鄉地形選擇居住地）；其二為「<strong>械鬥逼退說</strong>」（原本大家均於平原混居，後經多次分類械鬥敗北者被迫向內陸或山區遷移）。</p>
+</blockquote>
+<hr />
+<h3>4. 清代臺灣社會風氣與「分類械鬥」</h3>
+<p>清代臺灣社會因「羅漢腳」充斥、官府統治力量薄弱且資源爭奪激烈，爆發極為普遍的集體武力衝突，稱為「分類械鬥」。械鬥分類層級極為細緻且無所不鬥：</p>
+<ol>
+<li><strong>跨省族群械鬥</strong>：閩粵械鬥（福建閩南人 vs 廣東客家人）。</li>
+<li><strong>同省異州械鬥</strong>：漳泉械鬥（同屬福建省，漳州人 vs 泉州人）。<br />
+   * <strong>課堂經典對罵實例</strong>：泉州人嘲諷漳州人「張州人都很髒」；漳州人見泉州人祭拜用豬頭，則反嗆「全州人都是豬（台語：轉啦/全豬）」，雙方因而爆發激烈集體砍殺。</li>
+<li><strong>同州異縣械鬥</strong>：交兵（如同屬泉州府的三邑人 vs 同安人）。</li>
+<li><strong>同縣異姓械鬥</strong>：姓氏械鬥（如雲林地區廖、李、鍾三姓氏械鬥且世代不通婚；彰化王功地區林姓與陳姓械鬥）。</li>
+<li><strong>同姓異業/樂團械鬥</strong>：<br />
+   * <strong>宜蘭西皮福路械鬥</strong>：同族/同鄉因傳統樂曲北管派系（西皮派 vs 福路派）搶奪酬神演出與神明陣頭而拿樂器大打出手。<br />
+   * <strong>宜蘭秋夫械鬥</strong>：搬家公司與轎夫同業爭奪顧客資源爆發的集體械鬥。</li>
+</ol>
+<div class="mermaid">
+graph TD
+  F1["清代臺灣分類械鬥層級"] --> F2["跨省：閩粵械鬥（閩南 vs 客家）"]
+  F1 --> F3["同省異州：漳泉械鬥（漳州 vs 泉州）"]
+  F1 --> F4["同州異縣：交兵（三邑 vs 同安）"]
+  F1 --> F5["同縣異姓：姓氏械鬥（如雲林廖李鍾三姓、彰化林陳械鬥）"]
+  F1 --> F6["同業/樂團：宜蘭西皮福路械鬥、秋夫械鬥"]
+</div>
+<hr />
+<h2>⚠️ 老師強調考點與易錯陷阱 (Exam Focus &amp; Pitfalls)</h2>
+<ol>
+<li>
+<p><strong>【絕對必考題型】明鄭漢人來臺主因是「海禁政策」還是「遷界令」？</strong><br />
+   * <strong>正確答案</strong>：<strong>遷界令</strong>。清廷為斷絕鄭成功沿海物資補給頒布遷界令，強制沿海居民內遷，導致大量漢人被迫跟隨鄭成功渡海來臺。<br />
+   * <strong>解題陷阱</strong>：若單選題選項中<strong>沒有</strong>「遷界令」，則退而求其次選擇「<strong>海禁政策</strong>」（因為廣義的海禁政策包含了遷界令）。</p>
+</li>
+<li>
+<p><strong>【古蹟建設年代陷阱】台南孔廟 vs 台北孔廟</strong><br />
+   * <strong>考點解析</strong>：鄭經時期引進文教制度興建的孔廟是台南的「<strong>全臺首學</strong>」。<br />
+   * <strong>常見陷阱</strong>：題目若問明鄭時期建的孔廟，切勿勾選台北大龍峒孔廟（台北孔廟為日治/民國時期政府興建）。</p>
+</li>
+<li>
+<p><strong>【名稱改制考點】鄭經為何將「東都」改為「東寧」？</strong><br />
+   * <strong>觀念破解</strong>：鄭成功時期政權首都設於<strong>廈門</strong>，故將臺灣視為東方都城稱「東都」。鄭經時期因參與「三藩之亂」失敗，徹底丟失廈門，迫將首都轉移至臺灣，臺灣成為實質政治中心，故改稱為「東寧王國」（東寧），並將天興縣、萬年縣升格為天興州、萬年州。</p>
+</li>
+<li>
+<p><strong>【渡臺禁令條款陷阱】廣東人（粵民）為何被禁止來臺？</strong><br />
+   * <strong>觀念破解</strong>：清廷認為廣東沿海多海盜且風氣剽悍，來臺易演變成反抗勢力，故嚴禁粵民來臺。<br />
+   * <strong>解題連貫</strong>：粵民直至<strong>牡丹社事件</strong>後，沈葆楨與丁日昌推行開山撫墾，由丁日昌招攬潮汕地區移民才得以合法來臺。因此客家人/粵民來臺時間最晚、人數最少。</p>
+</li>
+</ol>
+<hr />
+<h2>🔑 記憶口訣與解題技巧 (Mnemonics &amp; Shortcuts)</h2>
+<ol>
+<li>
+<p><strong>渡臺偷渡風險口訣</strong>：「<strong>六死三留一回頭</strong>」<br />
+   * 10 位偷渡移民中：6 人罹難死於海峽、3 人順利留臺開墾、1 人臨陣反悔不敢上船。</p>
+</li>
+<li>
+<p><strong>偷渡黑話判斷關鍵字</strong>：<br />
+   * 「<strong>種芋頭</strong>」：騙乘客至無人沙洲拋棄（棄置）。<br />
+   * 「<strong>餵魚兒</strong>」：將生病或發瘋乘客拋入海中（扔海）。</p>
+</li>
+<li>
+<p><strong>渡臺禁令四大限制（證、單、禁、粵）</strong>：<br />
+   * <strong>證</strong>：需領有官方渡臺許可證。<br />
+   * <strong>單</strong>：僅限單身男子渡臺。<br />
+   * <strong>禁</strong>：嚴禁攜家帶眷。<br />
+   * <strong>粵</strong>：嚴禁粵民（廣東人）渡臺。</p>
+</li>
+<li>
+<p><strong>移民族群分布與信仰破題速記</strong>：<br />
+   * <strong>泉州</strong>：最早 → 沿海平原港口 → 保生大帝（吹海風求健康）。<br />
+   * <strong>漳州</strong>：次之 → 內陸丘陵地區 → 開漳聖王（開墾丘陵土）。<br />
+   * <strong>客家</strong>：最晚 → 近山山區地區 → 三山國王（山區鎮山神）。</p>
+</li>
+</ol>
+<hr />
+<h2>📝 課後作業與待辦事項 (Homework &amp; Tasks)</h2>
+<ul>
+<li><strong>課堂交代事項</strong>：無特定作業。</li>
+<li><strong>下階段進度預告</strong>：老師說明次堂課將繼續講解第二章後半段（清領初期社會演變續篇），並隨後進入第三課課程。建議同學們課後先預習清代臺灣分類械鬥的平息過程與祖籍神明信仰演變。</li>
+</ul>
+<hr />
+<h2>📚 專有名詞與重要公式/定義 (Glossary &amp; Formulas)</h2>
+<ul>
+<li><strong>軍屯制（屯田）</strong>: 鄭成功為解決軍糧問題所採行的兵農合一開墾制度，使軍隊分駐各地開墾土地，但常與原住民爆發土地利益衝突。</li>
+<li><strong>澎湖安撫師</strong>: 鄭氏政權於澎湖設立的官職，專門撫恤與招攬自中國大陸逃至澎湖的流民至臺灣參與開墾。</li>
+<li><strong>全臺首學</strong>: 台南孔廟之別稱，由鄭經時期引進儒學與科舉文教制度所興建，為臺灣歷史上第一座官辦學府。</li>
+<li><strong>三藩之亂</strong>: 清初平西王尚可喜、平南王耿精忠、靖南王吳三桂爆發的反清叛亂，鄭經曾率軍響應，最終失敗並失去廈門基地。</li>
+<li><strong>東寧王國</strong>: 鄭經失去廈門後，將臺灣升格為政治首都所採用的正式國號（將東都改為東寧）。</li>
+<li><strong>人去業荒</strong>: 施琅攻臺後，清廷實施消極治臺，將大批在臺漢人強行遣回大陸，導致臺灣初期土地與產業大量廢棄荒蕪。</li>
+<li><strong>渡臺禁令</strong>: 清廷為防止臺灣再度成為反清復明基地，對漢人渡海來臺所頒布的嚴格限制政策（需許可證、限單身、禁攜眷、禁粵民）。</li>
+<li><strong>同安船</strong>: 清代臺灣海峽偷渡客常搭乘的木造小型帆船，船體狹窄且普遍嚴重超載，橫渡黑水溝極具危險性。</li>
+<li><strong>羅漢腳</strong>: 清代臺灣因渡臺禁令（禁攜眷）導致嚴重男多女少，社會上無業、未婚、無固定居所的單身游民階層。</li>
+<li><strong>分類械鬥</strong>: 清代臺灣漢人移民社會因祖籍、姓氏、利益資源爭奪或同業競爭所爆發的集體武力流血衝突。</li>
+<li><strong>西皮福路械鬥</strong>: 宜蘭地區因北管音樂派系（西皮派與福路派）搶奪酬神演出與神明陣頭所爆發的著名同業械鬥。</li>
+</ul>
+<hr />
+<h2>🧠 課後自測題 (Quick Review Quiz)</h2>
+<h3>題目一：單選題</h3>
+<p>關於明鄭時期臺灣行政區劃與名稱的演變，鄭經將「東都」改稱為「東寧」、「天興縣／萬年縣」升格為「天興州／萬年州」的主要歷史背景為何？<br />
+(A) 鄭成功攻下赤崁樓，建立漢人第一個政權<br />
+(B) 鄭經參與三藩之亂失敗，失去廈門，迫將首都轉移至臺灣<br />
+(C) 清廷頒布遷界令，導致大量漢人移民湧入臺灣<br />
+(D) 陳永華建議引進科舉制度，為了配合文教升格  </p>
+<blockquote>
+<p><strong>【解題思維與答案】</strong><br />
+<strong>答案：(B)</strong><br />
+<strong>解析</strong>：鄭成功時期首都在廈門，故稱臺灣為「東都」；鄭經時期響應三藩之亂敗北，失去廈門後只能將首都實質移至臺灣，因而將臺灣改稱為「東寧」（東寧王國），並將天興縣、萬年縣升格為天興州、萬年州。</p>
+</blockquote>
+<hr />
+<h3>題目二：問答觀念思考題</h3>
+<p>清領初期實施嚴格的「渡臺禁令」（如限制許可證、禁攜眷、禁粵民），為何仍無法阻擋閩粵移民大量偷渡來臺？請結合「推力與拉力」理論簡要說明。</p>
+<blockquote>
+<p><strong>【解題思維與答案】</strong><br />
+<strong>答</strong>：<br />
+1. <strong>推力（中國大陸）</strong>：康雍乾時期人口暴增至 4.5 億，而閩粵地區「山多田少」（七山二水一分田），加上天災戰亂頻繁，生存極其困難，形成巨大的推離力量。<br />
+2. <strong>拉力（臺灣）</strong>：臺灣土地肥沃，且清初「人去業荒」後呈「地廣人稀」狀態，吸引無業貧民渡海尋求生機。當原鄉推力與臺灣拉力遠大於法規懲罰時，移民寧可冒「六死三留一回頭」的風險偷渡來臺。</p>
+</blockquote>
+<hr />
+<h3>題目三：連線配對與觀念題</h3>
+<p>請寫出清代臺灣「泉州人、漳州人、客家人」三大族群在「開墾地理位置」與「主要祈求神明」上的對應關係，並說明客家人來臺時間較晚的原因。</p>
+<blockquote>
+<p><strong>【解題思維與答案】</strong><br />
+<strong>答</strong>：<br />
+1. <strong>泉州人</strong>：最早抵達，分佈於<strong>西部沿海平原、港口</strong>；信仰<strong>保生大帝</strong>（求健康醫病）。<br />
+2. <strong>漳州人</strong>：次之抵達，分佈於<strong>內陸丘陵地區</strong>；信仰<strong>開漳聖王</strong>（求開墾順利）。<br />
+3. <strong>客家人</strong>：最晚抵達，分佈於<strong>近山地區／山區</strong>；信仰<strong>三山國王</strong>（求山區鎮山平安）。<br />
+4. <strong>客家人較晚來臺原因</strong>：清廷在渡臺禁令中設有「嚴禁粵民（廣東人）來臺」條款，直至牡丹社事件後丁日昌招攬潮汕移民才正式解禁，故客家人渡臺時間最晚、人數最少。</p>
+</blockquote>
+<hr />
+<p>💡 <strong>學習小建議</strong>：如果需要將這份筆記進一步製作成複習測驗卡（Flashcards）或圖文摘要（Infographic），我可以隨時為你生成相應的學習工具喔！</p>
+    </div>
+    <footer class="doc-foot">
+      自動生成於 NotebookLM Study Assistant • 專為高中學生課後複習與考前衝刺打造
+    </footer>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      if (window.mermaid) {
+        mermaid.initialize({
+          startOnLoad: true,
+          theme: 'neutral',
+          fontFamily: "'Noto Sans TC', 'Inter', sans-serif",
+          flowchart: { curve: 'basis', htmlLabels: true },
+          securityLevel: 'loose'
+        });
+      }
+      if (window.renderMathInElement) {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+          ],
+          throwOnError: false
+        });
+      }
+    });
+  </script>
+  
+  <script>
+    (function() {
+      const treeData = {"name": "臺灣史：明鄭與清領初期的移民社會", "children": [{"name": "明鄭時期", "children": [{"name": "移民推力因素", "children": [{"name": "海禁政策"}, {"name": "遷界令"}]}, {"name": "鄭成功時期", "children": [{"name": "軍屯制度（屯田）", "children": [{"name": "解決糧食短缺"}, {"name": "與原住民衝突", "children": [{"name": "竹塹地區衝突"}, {"name": "南投衝突（林奇事件／林將軍廟）"}]}]}, {"name": "流民管理", "children": [{"name": "設澎湖安撫師"}, {"name": "招攬流民開墾"}]}, {"name": "首都於廈門（臺灣稱東都）"}]}, {"name": "鄭經時期", "children": [{"name": "文教制度", "children": [{"name": "臺南孔廟（全臺首學）"}]}, {"name": "首都轉移", "children": [{"name": "響應三藩之亂失敗丟失廈門"}, {"name": "改臺灣為東寧"}, {"name": "升格天興、萬年兩縣為州"}]}]}]}, {"name": "清領初期移民政策", "children": [{"name": "治臺方針", "children": [{"name": "為防而治"}, {"name": "人口遣返（人去業荒）"}]}, {"name": "渡臺禁令", "children": [{"name": "主要限制條款", "children": [{"name": "需領有官方許可證"}, {"name": "嚴禁攜家帶眷（限單身男子）"}, {"name": "嚴禁粵民（廣東人）渡臺"}]}, {"name": "社會影響", "children": [{"name": "男女比例嚴重失衡"}, {"name": "羅漢腳問題嚴重"}, {"name": "偷渡風氣盛行"}]}, {"name": "偷渡風險（同安船）", "children": [{"name": "船艙擁擠與疾病風險"}, {"name": "黑水溝險惡風浪（臺灣海峽）"}, {"name": "船員惡意棄置（種芋頭／餵魚兒）"}, {"name": "俗諺：六死三留一回頭"}]}]}, {"name": "政策鬆綁", "children": [{"name": "沈葆楨：廢除渡臺禁令（牡丹社事件後）"}, {"name": "丁日昌：招攬廣東潮汕移民來臺"}]}]}, {"name": "移民推力與拉力", "children": [{"name": "大陸推力因素", "children": [{"name": "人口暴增（康雍乾人口膨脹）"}, {"name": "引進美洲作物（地瓜、玉米）"}, {"name": "閩粵地理環境（七山二水一分田）"}, {"name": "社會動亂與天災頻繁"}]}, {"name": "臺灣拉力因素", "children": [{"name": "地廣人稀、資源豐富"}, {"name": "謀生開墾機會"}]}]}, {"name": "族群分布與社會衝突", "children": [{"name": "移墾分布與神明信仰", "children": [{"name": "泉州人", "children": [{"name": "最早抵達／人數最多"}, {"name": "分佈於西部沿海平原與港口"}, {"name": "信仰保生大帝"}]}, {"name": "漳州人", "children": [{"name": "次之抵達"}, {"name": "分佈於內陸丘陵地區"}, {"name": "信仰開漳聖王"}]}, {"name": "客家人／粵民", "children": [{"name": "最晚抵達／人數最少"}, {"name": "分佈於近山與山區地區"}, {"name": "信仰三山國王"}]}]}, {"name": "分類械鬥", "children": [{"name": "爆發原因", "children": [{"name": "資源爭奪與生存競爭"}, {"name": "學說：由混居因械鬥演變為分類群居"}]}, {"name": "械鬥類型", "children": [{"name": "跨省：閩粵械鬥（閩南 vs 客家）"}, {"name": "同省異州：漳泉械鬥"}, {"name": "同州異縣：交兵（三邑 vs 同安）"}, {"name": "同縣異姓：姓氏械鬥"}, {"name": "同業與樂團：西皮福路械鬥／秋夫械鬥"}]}]}]}]};
+      const container = document.getElementById("tree-svg-container");
+      if (!container || !treeData) return;
+
+      const width = container.clientWidth || 880;
+      const height = 520;
+
+      const svg = d3.select("#tree-svg-container")
+        .append("svg")
+        .attr("width", "100%")
+        .attr("height", height)
+        .attr("viewBox", [0, 0, width, height]);
+
+      const g = svg.append("g");
+
+      const zoom = d3.zoom()
+        .scaleExtent([0.25, 2.5])
+        .on("zoom", (e) => g.attr("transform", e.transform));
+
+      svg.call(zoom);
+
+      const root = d3.hierarchy(treeData);
+      root.x0 = height / 2;
+      root.y0 = 0;
+
+      let i = 0;
+      const duration = 380;
+      // [dy, dx]: 垂直節距 58px (確保上下不重疊), 水平層級 320px (確保長文字不穿透父層)
+      const treeLayout = d3.tree().nodeSize([58, 320]);
+
+      function splitNodeText(text, maxChars) {
+        if (!text) return [""];
+        if (text.length <= maxChars) return [text];
+
+        // 優先在括號處斷行，例如：世風日下之自身矛盾對比（擇師教子 vs. 於身恥師）
+        const parenIdx = text.search(/[（(]/);
+        if (parenIdx >= 3 && parenIdx <= maxChars + 4) {
+          const p1 = text.slice(0, parenIdx).trim();
+          const p2 = text.slice(parenIdx).trim();
+          if (p1 && p2) return [p1, p2];
+        }
+
+        // 優先在冒號、破折號、頓號處斷行
+        const sepIdx = text.search(/[：:—、]/);
+        if (sepIdx >= 3 && sepIdx <= maxChars + 2) {
+          const p1 = text.slice(0, sepIdx + 1).trim();
+          const p2 = text.slice(sepIdx + 1).trim();
+          if (p1 && p2) return [p1, p2];
+        }
+
+        // 預設在 maxChars 處均勻斷行
+        return [text.slice(0, maxChars), text.slice(maxChars)];
+      }
+
+      if (root.children) {
+        root.children.forEach(c => {
+          if (c.children) {
+            c.children.forEach(collapse);
+          }
+        });
+      }
+
+      function collapse(d) {
+        if (d.children) {
+          d._children = d.children;
+          d._children.forEach(collapse);
+          d.children = null;
+        }
+      }
+
+      function expand(d) {
+        if (d._children) {
+          d.children = d._children;
+          d.children.forEach(expand);
+          d._children = null;
+        }
+      }
+
+      const colorScale = d3.scaleOrdinal(d3.schemeTableau10);
+
+      function getNodeColor(d) {
+        if (d.depth === 0) return "#2563eb";
+        let p = d;
+        while (p.depth > 1) p = p.parent;
+        return colorScale(p.data.name);
+      }
+
+      function update(source) {
+        const nodes = root.descendants();
+        const links = root.links();
+
+        treeLayout(root);
+
+        const node = g.selectAll("g.node")
+          .data(nodes, d => d.id || (d.id = ++i));
+
+        const nodeEnter = node.enter().append("g")
+          .attr("class", "node")
+          .attr("transform", d => `translate(${source.y0},${source.x0})`)
+          .on("click", (event, d) => {
+            if (d.children) {
+              d._children = d.children;
+              d.children = null;
+            } else if (d._children) {
+              d.children = d._children;
+              d._children = null;
+            }
+            update(d);
+          });
+
+        nodeEnter.append("circle")
+          .attr("r", d => d.depth === 0 ? 8 : (d._children || d.children ? 6 : 4))
+          .attr("fill", d => d._children ? getNodeColor(d) : "#ffffff")
+          .attr("stroke", d => getNodeColor(d));
+
+        const textNode = nodeEnter.append("text")
+          .attr("class", "node-text")
+          .attr("text-anchor", d => (d.children || d._children) ? "end" : "start")
+          .style("fill-opacity", 0);
+
+        textNode.each(function(d) {
+          const el = d3.select(this);
+          const isParent = Boolean(d.children || d._children);
+          const xOffset = isParent ? -14 : 14;
+          const maxChars = isParent ? 13 : 18;
+          const lines = splitNodeText(d.data.name, maxChars);
+
+          if (lines.length === 1) {
+            el.attr("x", xOffset)
+              .attr("dy", "0.32em")
+              .text(lines[0]);
+          } else {
+            el.attr("x", xOffset)
+              .attr("dy", "-0.35em")
+              .text(lines[0]);
+            el.append("tspan")
+              .attr("x", xOffset)
+              .attr("dy", "1.25em")
+              .text(lines[1]);
+          }
+        });
+
+        const nodeUpdate = node.merge(nodeEnter).transition().duration(duration)
+          .attr("transform", d => `translate(${d.y},${d.x})`);
+
+        nodeUpdate.select("circle")
+          .attr("r", d => d.depth === 0 ? 8 : (d._children || d.children ? 6 : 4))
+          .attr("fill", d => d._children ? getNodeColor(d) : "#ffffff")
+          .attr("stroke", d => getNodeColor(d));
+
+        nodeUpdate.select("text")
+          .style("fill-opacity", 1);
+
+        const nodeExit = node.exit().transition().duration(duration)
+          .attr("transform", d => `translate(${source.y},${source.x})`)
+          .remove();
+
+        nodeExit.select("circle").attr("r", 1e-6);
+        nodeExit.select("text").style("fill-opacity", 1e-6);
+
+        const link = g.selectAll("path.link")
+          .data(links, d => d.target.id);
+
+        const linkEnter = link.enter().insert("path", "g")
+          .attr("class", "link")
+          .attr("d", d => {
+            const o = {x: source.x0, y: source.y0};
+            return diagonal(o, o);
+          });
+
+        link.merge(linkEnter).transition().duration(duration)
+          .attr("d", d => diagonal(d.source, d.target));
+
+        link.exit().transition().duration(duration)
+          .attr("d", d => {
+            const o = {x: source.x, y: source.y};
+            return diagonal(o, o);
+          })
+          .remove();
+
+        nodes.forEach(d => {
+          d.x0 = d.x;
+          d.y0 = d.y;
+        });
+      }
+
+      function diagonal(s, d) {
+        return `M ${s.y} ${s.x}
+                C ${(s.y + d.y) / 2} ${s.x},
+                  ${(s.y + d.y) / 2} ${d.x},
+                  ${d.y} ${d.x}`;
+      }
+
+      function autoFitTree(duration = 450) {
+        const nodes = root.descendants();
+        if (!nodes || nodes.length === 0) return;
+
+        let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+        nodes.forEach(d => {
+          const isParent = Boolean(d.children || d._children);
+          const leftBound = d.y - (isParent ? 180 : 20);
+          const rightBound = d.y + (isParent ? 20 : 220);
+          const topBound = d.x - 32;
+          const bottomBound = d.x + 32;
+
+          if (leftBound < minX) minX = leftBound;
+          if (rightBound > maxX) maxX = rightBound;
+          if (topBound < minY) minY = topBound;
+          if (bottomBound > maxY) maxY = bottomBound;
+        });
+
+        const fullWidth = container.clientWidth || 880;
+        const fullHeight = height;
+        const treeW = maxX - minX;
+        const treeH = maxY - minY;
+
+        if (treeW <= 0 || treeH <= 0) return;
+
+        const scale = Math.min(0.92, (fullWidth * 0.90) / treeW, (fullHeight * 0.90) / treeH);
+        const clampedScale = Math.max(scale, 0.42);
+
+        const midTreeX = (minX + maxX) / 2;
+        const midTreeY = (minY + maxY) / 2;
+        const tx = fullWidth / 2 - clampedScale * midTreeX;
+        const ty = fullHeight / 2 - clampedScale * midTreeY;
+
+        if (duration > 0) {
+          svg.transition().duration(duration).call(
+            zoom.transform,
+            d3.zoomIdentity.translate(tx, ty).scale(clampedScale)
+          );
+        } else {
+          svg.call(
+            zoom.transform,
+            d3.zoomIdentity.translate(tx, ty).scale(clampedScale)
+          );
+        }
+      }
+
+      window.expandAll = function() {
+        root.each(expand);
+        update(root);
+        autoFitTree(450);
+      };
+
+      window.collapseAll = function() {
+        if (root.children) {
+          root.children.forEach(collapse);
+        }
+        update(root);
+        autoFitTree(450);
+      };
+
+      window.resetZoom = function() {
+        autoFitTree(450);
+      };
+
+      // 首次繪製節點並自動縮放置中全覽
+      update(root);
+      autoFitTree(0);
+    })();
+  </script>
+
+</body>
+</html>

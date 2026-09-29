@@ -1,9 +1,8 @@
 @echo off
-chcp 950 > nul
 title HTML Notes Auto Sync
 
 echo ========================================
-echo   雲端 HTML 筆記一鍵同步工具
+echo   Auto Syncing HTML Notes to GitHub...
 echo ========================================
 echo.
 
@@ -11,6 +10,6 @@ python generate_and_push.py
 
 echo.
 echo ========================================
-echo   同步作業完成！按任意鍵關閉視窗...
+echo   Sync Completed! Press any key to exit.
 echo ========================================
 pause > nul
