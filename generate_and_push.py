@@ -2,6 +2,7 @@ import os
 import sys
 import re
 import glob
+import shutil
 import subprocess
 from datetime import datetime
 
@@ -385,7 +386,7 @@ def sync_to_github():
     if not remote_out:
         safe_print("\n[!] 提示：您尚未連結至 GitHub 遠端倉庫 (remote)。")
         safe_print("請在 GitHub 建立 Repository 後，執行以下指令連結：")
-        safe_print("   git remote add origin https://github.com/你的帳號/你的倉庫名.git")
+        safe_print("   git remote add origin https://github.com/geminieagleteng-max/my-html-notes.git")
         safe_print("連結完成後，再次執行本腳本即可一鍵推送！")
         return
 
@@ -400,16 +401,34 @@ def sync_to_github():
 
 def main():
     safe_print("========================================")
-    safe_print("   線上 HTML 筆記自動同步工具")
+    safe_print("   線上 HTML 筆記自動同步與 GitHub Pages 部署工具")
     safe_print("========================================\n")
-    
-    notes = collect_notes()
-    safe_print(f"[*] 掃描完成，共找到 {len(notes)} 篇 HTML 筆記。")
-    for n in notes:
-        safe_print(f"   • [{n['date']}] {n['title']} ({n['path']})")
-    safe_print("")
-    
-    generate_index_html(notes)
+
+    # 嘗試調用整合版的全學科大一統總目錄產生器
+    sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "錄音轉筆記", "audio2report_assistant_v1.0")))
+    generated_rich_index = False
+    try:
+        from audio2report_assistant import generate_master_index
+        archive_base_dir = r"G:\我的雲端硬碟\高中學習資料\錄音檔整理筆記"
+        if os.path.exists(archive_base_dir):
+            safe_print("[*] 正在從雲端硬碟歸檔目錄產生具備 D3 星系心智圖與快閃卡的全功能總目錄...")
+            generate_master_index(archive_base_dir)
+            master_idx_path = os.path.join(archive_base_dir, "index.html")
+            if os.path.exists(master_idx_path):
+                shutil.copy2(master_idx_path, INDEX_FILE)
+                generated_rich_index = True
+                safe_print(f"[+] 已成功匯入全功能導覽總頁面: {INDEX_FILE}")
+    except Exception as e:
+        safe_print(f"[!] 使用全功能總目錄產生器時留意: {e}")
+
+    if not generated_rich_index:
+        notes = collect_notes()
+        safe_print(f"[*] 掃描完成，共找到 {len(notes)} 篇 HTML 筆記。")
+        for n in notes:
+            safe_print(f"   • [{n['date']}] {n['title']} ({n['path']})")
+        safe_print("")
+        generate_index_html(notes)
+
     sync_to_github()
 
 if __name__ == "__main__":
